@@ -31,8 +31,13 @@ die "$PROG: must specify one filename!\n" if @ARGV != 1;
 
 my $filename = shift;
 
-open FASTA, "<", $filename
-  or die "$PROG: can't open $filename: $!\n";
+if ($filename =~ /.gz$/) {
+  open(FASTA, “gunzip -c $filename |”) || die “can’t open pipe to $filename”;
+} else {
+  open FASTA, "<", $filename
+    or die "$PROG: can't open $filename: $!\n";
+}
+
 my $seq_ct = 0;
 my $errors = 0;
 while (<FASTA>) {

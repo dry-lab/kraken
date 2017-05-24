@@ -43,15 +43,17 @@ open FILE, "<", $old_filename
   or die "$PROG: can't read $old_filename: $!\n";
 
 my ($fh, $new_filename) = tempfile($template, DIR => $directory,
-                                   UNLINK => 0, SUFFIX => ".$suffix");
+                                   UNLINK => 0, SUFFIX => ".gz");
 # copy loop
-while (<FILE>) {
-  print {$fh} $_;
-}
-close FILE;
-close $fh;
+# while (<FILE>) {
+#   print {$fh} $_;
+# }
+# close FILE;
+# close $fh;
 
-print "$new_filename\n";
+# print "$new_filename\n";
+
+ln -s $old_filename $new_filename
 
 sub usage {
   die "$PROG: <-d directory> <-t template> <-s suffix> <filename>\n";

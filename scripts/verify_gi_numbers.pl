@@ -49,7 +49,7 @@ while (<FASTA>) {
     $errors++;
     warn "file $filename, line $. lacks sequence ID\n";
   }
-  if ($1 !~ /(^|\|)(gi|kraken:taxid)\|(\d+)/) {
+  if ($1 !~ /(^|\|)(gi|kraken:taxid|[AN][CTWZ])(\||_)(\d+)/) {
     $errors++;
     warn "file $filename, line $.: sequence ID lacks GI number\n";
   }

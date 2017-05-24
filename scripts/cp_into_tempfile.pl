@@ -39,11 +39,13 @@ die "$PROG: must specify a single filename\n" unless @ARGV == 1;
 
 $suffix =~ s/^\.//;
 my $old_filename = shift @ARGV;
-open FILE, "<", $old_filename
-  or die "$PROG: can't read $old_filename: $!\n";
+# open FILE, "<", $old_filename
+#  or die "$PROG: can't read $old_filename: $!\n";
 
 my ($fh, $new_filename) = tempfile($template, DIR => $directory,
                                    UNLINK => 0, SUFFIX => ".gz");
+`rm $new_filename`;
+
 # copy loop
 # while (<FILE>) {
 #   print {$fh} $_;
@@ -53,7 +55,7 @@ my ($fh, $new_filename) = tempfile($template, DIR => $directory,
 
 # print "$new_filename\n";
 
-ln -s $old_filename $new_filename
+`ln -s $old_filename $new_filename`;
 
 sub usage {
   die "$PROG: <-d directory> <-t template> <-s suffix> <filename>\n";

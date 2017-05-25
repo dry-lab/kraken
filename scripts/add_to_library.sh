@@ -35,11 +35,11 @@ then
   exit 1
 fi
 
-if ! verify_gi_numbers.pl "$1"
-then
-  echo "Can't add \"$1\": sequence is missing GI number"
-  exit 1
-fi
+#if ! verify_gi_numbers.pl "$1"
+#then
+#  echo "Can't add \"$1\": sequence is missing GI number"
+#  exit 1
+#fi
 
 add_dir="$LIBRARY_DIR/added"
 mkdir -p "$add_dir"

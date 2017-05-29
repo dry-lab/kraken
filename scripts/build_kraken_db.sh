@@ -78,7 +78,7 @@ else
 
   find library/ '(' -name '*.fna' -o -name '*.fa' -o -name '*.gz' ')' -print0 | \
     xargs -0 zcat | \
-    jellyfish count -m $KRAKEN_KMER_LEN -s $KRAKEN_HASH_SIZE -C -t $KRAKEN_THREAD_CT \
+    ~/Src/jellyfish-1.1.11/bin/jellyfish count -m $KRAKEN_KMER_LEN -s $KRAKEN_HASH_SIZE -C -t $KRAKEN_THREAD_CT \
       -o database /dev/fd/0
 
   # Merge only if necessary

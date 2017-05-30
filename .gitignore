@@ -1,0 +1,10 @@
+src/classify
+src/db_shrink
+src/db_sort
+src/gzstream.o
+src/krakendb.o
+src/krakenutil.o
+src/make_seqid_to_taxid_map
+src/quickfile.o
+src/seqreader.o
+src/set_lcas
